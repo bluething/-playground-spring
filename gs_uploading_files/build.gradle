@@ -12,12 +12,41 @@ repositories {
 	mavenCentral()
 }
 
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+sourceSets {
+	component {
+		java.srcDir file('src/test/component/java')
+		resources.srcDir file('src/test/component/resources')
+		compileClasspath += sourceSets.main.output
+		runtimeClasspath += sourceSets.main.output
+	}
+}
+
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	componentImplementation('org.springframework.boot:spring-boot-starter-test') {
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	}
 }
 
 tasks.named('test') {
+	useJUnitPlatform()
+}
+
+/**
+ * Component Test
+ */
+task component(type: Test) {
+	testClassesDirs = sourceSets.component.output.classesDirs
+	classpath = sourceSets.component.runtimeClasspath
 	useJUnitPlatform()
 }
