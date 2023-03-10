@@ -1,4 +1,4 @@
-package io.github.bluething.playground.spring.callicoderuploaddownloadrest.configuration;
+package io.github.bluething.playground.spring.callicoderuploaddownloadrest.file;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
