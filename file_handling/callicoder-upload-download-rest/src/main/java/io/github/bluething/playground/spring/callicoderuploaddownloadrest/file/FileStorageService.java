@@ -20,10 +20,11 @@ class FileStorageService implements Storage {
     private final Path rootLocation;
 
     @Autowired
-    public FileStorageService(StorageProperties storageProperties) {
+    public FileStorageService(StorageProperties storageProperties) throws IOException {
         this.rootLocation = Paths.get(storageProperties.location())
                 .toAbsolutePath()
                 .normalize();
+        Files.createDirectories(this.rootLocation);
     }
 
     @Override
