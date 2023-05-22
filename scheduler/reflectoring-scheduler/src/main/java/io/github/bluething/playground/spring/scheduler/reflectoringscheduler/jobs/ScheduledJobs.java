@@ -1,5 +1,6 @@
 package io.github.bluething.playground.spring.scheduler.reflectoringscheduler.jobs;
 
+import net.javacrumbs.shedlock.spring.annotation.SchedulerLock;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.annotation.Async;
@@ -53,5 +54,12 @@ class ScheduledJobs {
     @Async
     void reportCurrentTimeCronWithIntervalFromProperty() {
         LOG.info("reportCurrentTimeCronWithIntervalFromProperty - The time is now {}", sdf.format(new Date()));
+    }
+
+    @Scheduled(fixedRateString = "${interval}")
+    @SchedulerLock(name = "ScheduledJobsLock")
+    @Async
+    void reportCurrentTimeCronWithIntervalFromPropertyLockedByShedLock() {
+        LOG.info("reportCurrentTimeCronWithIntervalFromPropertyLockedByShedLock - The time is now {}", sdf.format(new Date()));
     }
 }
