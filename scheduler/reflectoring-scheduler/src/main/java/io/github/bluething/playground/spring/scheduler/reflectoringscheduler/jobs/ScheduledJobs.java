@@ -22,4 +22,10 @@ class ScheduledJobs {
     void reportCurrentTimeFixedRate() {
         LOG.info("reportCurrentTimeFixedRate - The time is now {}", sdf.format(new Date()));
     }
+
+    @Scheduled(fixedRate = 3000)
+    void reportCurrentTimeFixedRateAndSleep() throws InterruptedException {
+        LOG.info("reportCurrentTimeFixedRateAndSleep - The time is now {}", sdf.format(new Date()));
+        Thread.sleep(4000);
+    }
 }
