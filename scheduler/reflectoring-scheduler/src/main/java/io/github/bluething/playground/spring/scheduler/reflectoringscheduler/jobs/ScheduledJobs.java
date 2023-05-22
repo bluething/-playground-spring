@@ -36,4 +36,10 @@ class ScheduledJobs {
         LOG.info("reportCurrentTimeFixedRateAndSleepWithAsync - The time is now {}", sdf.format(new Date()));
         Thread.sleep(4000);
     }
+
+    @Scheduled(fixedDelay = 2000, initialDelay = 1000)
+    @Async
+    void reportCurrentTimeFixedDelayWithInitialDelay() {
+        LOG.info("reportCurrentTimeFixedDelayWithInitialDelay - The time is now {}", sdf.format(new Date()));
+    }
 }
