@@ -17,4 +17,9 @@ class ScheduledJobs {
     void reportCurrentTimeFixedDelay() {
         LOG.info("reportCurrentTimeFixedDelay - The time is now {}", sdf.format(new Date()));
     }
+
+    @Scheduled(fixedRate = 3000)
+    void reportCurrentTimeFixedRate() {
+        LOG.info("reportCurrentTimeFixedRate - The time is now {}", sdf.format(new Date()));
+    }
 }
