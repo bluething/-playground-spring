@@ -48,4 +48,10 @@ class ScheduledJobs {
     void reportCurrentTimeFixedRateStringWithInitialDelayWithIntervalFromProperty() {
         LOG.info("reportCurrentTimeFixedRateStringWithInitialDelayWithIntervalFromProperty - The time is now {}", sdf.format(new Date()));
     }
+
+    @Scheduled(cron = "${interval-in-cron}")
+    @Async
+    void reportCurrentTimeCronWithIntervalFromProperty() {
+        LOG.info("reportCurrentTimeCronWithIntervalFromProperty - The time is now {}", sdf.format(new Date()));
+    }
 }
