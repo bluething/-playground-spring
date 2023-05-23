@@ -1,4 +1,4 @@
-package com.example.yeralin.priorityjob;
+package io.github.bluething.playground.spring.scheduler.yeralin.priorityjob;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
