@@ -17,6 +17,6 @@ class SchedulerConfig implements SchedulingConfigurer {
     }
 
     Executor executor() {
-        return Executors.newScheduledThreadPool()
+        return null;
     }
 }
