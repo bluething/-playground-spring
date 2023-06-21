@@ -1,7 +1,6 @@
 package com.example.testcontainers_gettingstartedguides_springboot;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -22,8 +21,12 @@ public class TestcontainersGettingstartedguidesSpringbootApplication {
 @Entity
 @Table(name = "customers")
 class Customer {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	@Column(nullable = false)
 	private String name;
+	@Column(nullable = false, unique = true)
 	private String email;
 
 	public Customer() {
