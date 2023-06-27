@@ -11,7 +11,7 @@ import java.util.UUID;
 
 import static org.awaitility.Awaitility.await;
 
-@ContextConfiguration(initializers = TestcontainersInitializer.class)
+@EnableTestcontainers
 @SpringBootTest
 class MessageListenerTest {
 
